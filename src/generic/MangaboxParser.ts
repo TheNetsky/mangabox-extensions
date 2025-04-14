@@ -371,11 +371,11 @@ export class MangaboxParser {
         return decodeURI(Application.decodeHTMLEntities(image ?? ""));
     }
 
-    parseDate = (date: string): Date => {
+    parseDate = (date: string): Date | undefined => {
         date = date.toUpperCase();
 
         if (date.includes("LESS THAN AN HOUR") || date.includes("JUST NOW")) {
-            return new Date();
+            return undefined;
         }
 
         if (date.includes("YESTERDAY")) {
